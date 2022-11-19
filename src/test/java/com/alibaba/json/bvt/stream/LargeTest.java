@@ -3,6 +3,7 @@ package com.alibaba.json.bvt.stream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class LargeTest extends TestCase {
         for (int i = 0; i < 100 * 1; ++i) {
             list.add(Integer.toString(i));
         }
-        File file = File.createTempFile("fastjson-stream-large", "json");
+        File file = Files.createTempFile("fastjson-stream-large", "json").toFile();
         JSONWriter writer = new JSONWriter(new FileWriter(file));
         writer.startArray();
         writer.writeObject(list);
